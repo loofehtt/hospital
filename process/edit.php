@@ -4,7 +4,7 @@ include '../config.php';
 $id = $_GET['id'];
 ?>
 <h2>Thay đổi thông tin bệnh nhân</h2>
-<form action="edit.php?id=<?php echo $id; ?>" method="post">
+<form method="post">
     <div class="form-group row">
         <label for="" class="col-sm-2 col-form-label">Tên</label>
         <div class="col-sm-10">
@@ -75,7 +75,6 @@ $id = $_GET['id'];
 
 <?php
 if (isset($_POST['Save'])) {
-    $id = $_GET['id'];
     $fname = $_POST['Fname'];
     $lname = $_POST['Lname'];
     $birth = $_POST['Birth'];
@@ -88,7 +87,7 @@ if (isset($_POST['Save'])) {
 
     //? câu lệnh
     $sql = "UPDATE patient SET firstname = '$fname', lastname = '$lname' , dateofbirth = '$birth',
-    gender = '$gender', mobile = '$mobile', email = '$email', height = '$height', weight = '$weight',
+    gender = '$gender', mobile = '$mobile', email = '$email', height = '$height', weight = $weight,
     blood_type='$bgroup',modified_on= CURRENT_TIMESTAMP WHERE patientid = $id";
 
     //? kiểm tra và thực thi câu lệnh
